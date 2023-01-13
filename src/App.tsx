@@ -1,11 +1,13 @@
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppNavigator from "./components/navigators/AppNavigator";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Portafolio</h1>
-      </header>
+      <Router>
+        <AppNavigator />
+      </Router>
     </div>
   );
 }
