@@ -3,7 +3,7 @@ import NavBar from "../navigationBars/NavBar";
 import { Routes, Route } from "react-router-dom";
 // Screens
 import PersonalInfo from "../../screens/PersonalInfo";
-import Skills from "../../screens/Skills";
+import Skills from "../../screens/skills/Skills";
 import Home from "../../screens/Home";
 
 const AppNavigator = () => {
