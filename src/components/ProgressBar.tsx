@@ -14,12 +14,12 @@ const ProgresBar = ({ bgColor, progress, height }: any) => {
     width: `${progress}%`,
     backgroundColor: bgColor,
     borderRadius: 40,
-    textAlign: "right" as "right",
+    textAlign: "center" as "center",
   };
 
   const progresstext = {
     padding: 10,
-    color: "black",
+    color: "white",
     fontWeight: 900,
   };
 
