@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import PersonalInfo from "../../screens/PersonalInfo";
 import Skills from "../../screens/skills/Skills";
 import Home from "../../screens/Home";
+import SkillDetail from "../../screens/skills/SkillDetail";
 
 const AppNavigator = () => {
   return (
@@ -17,6 +18,7 @@ const AppNavigator = () => {
           <Route path="/" element={<Home />} />
           <Route path="/personalInfo" element={<PersonalInfo />} />
           <Route path="/skills" element={<Skills />} />
+          <Route path="/skillDetail" element={<SkillDetail />} />
         </Routes>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import ProgresBar from "../../components/ProgressBar";
 import AddSkill from "./AddSkill";
+import { NavLink } from "react-router-dom";
 // Hooks
 import useGetSkills from "../../hooks/skills/useGetSkills";
 // My components
@@ -66,9 +67,15 @@ const Skills = () => {
                   skills.map((obj: any, index) => {
                     return (
                       obj.typeSkill === "1" && (
-                        <tr key={index}>
+                        <tr key={index} className="hover:bg-slate-300">
                           <td className="border-b pl-3 border-gray-300 w-[50%]">
-                            {obj.nameSkill}
+                            <NavLink
+                              to="/skillDetail"
+                              state={{ id: obj.idSkill }}
+                              className="text-blue-600 hover:text-blue-800 hover:border-b border-blue-800"
+                            >
+                              {obj.nameSkill}
+                            </NavLink>
                           </td>
                           <td className="border-b border-gray-300 w-[40%]">
                             <ProgresBar
@@ -77,8 +84,8 @@ const Skills = () => {
                               height={22}
                             />
                           </td>
-                          <td className="border-b  border-gray-300 w-[10%]">
-                            <button className="hover:text-rose-800 ">
+                          <td className="border-b text-slate-800 border-gray-300 w-[10%]">
+                            <button className="hover:text-red-600 ">
                               <DeleteIcon />
                             </button>
                           </td>
@@ -120,15 +127,20 @@ const Skills = () => {
                   skills.map((obj: any, index) => {
                     return (
                       obj.typeSkill === "2" && (
-                        <tr key={index}>
+                        <tr key={index} className="hover:bg-slate-300">
                           <td className="border-b pl-3  border-gray-300 w-[50%]">
-                            {obj.nameSkill}
+                            <button className="text-blue-600 hover:text-blue-800 hover:border-b border-blue-800">
+                              {obj.nameSkill}
+                            </button>
                           </td>
                           <td className="border-b  border-gray-300 w-[40%]">
                             {obj.levelSkill}
                           </td>
-                          <td className="border-b  border-gray-300 w-[10%]">
-                            <button className="hover:text-rose-800 ">
+                          <td className="border-b text-slate-800 border-gray-300 w-[10%]">
+                            <button
+                              onClick={() => {}}
+                              className="hover:text-red-600 "
+                            >
                               <DeleteIcon />
                             </button>
                           </td>
