@@ -4,23 +4,22 @@ const ProgresBar = ({ bgColor, progress, height }: any) => {
   const Parentdiv = {
     height: height,
     width: "100%",
-    backgroundColor: "whitesmoke",
-    borderRadius: 40,
-    margin: 2,
+    backgroundColor: "transparent",
+    borderRadius: 0,
   };
 
   const Childdiv = {
     height: "100%",
     width: `${progress}%`,
     backgroundColor: bgColor,
-    borderRadius: 40,
+    borderRadius: 30,
     textAlign: "center" as "center",
   };
 
   const progresstext = {
     padding: 10,
     color: "white",
-    fontWeight: 900,
+    fontWeight: 500,
   };
 
   return (
