@@ -45,6 +45,7 @@ const PersonalInfo = () => {
                     <div className="flex flex-row justify-between">
                       <button
                         type="button"
+                        onClick={() => window.open(obj.githubPi)}
                         className="w-[48%] flex flex-row justify-center items-center h-8 mt-4 rounded-md bg-gradient-to-r from-gray-600 to-gray-800"
                       >
                         <div className="w-7 h-8 mt-1">
@@ -54,6 +55,7 @@ const PersonalInfo = () => {
                       </button>
                       <button
                         type="button"
+                        onClick={() => window.open(obj.linkedinPi)}
                         className="w-[48%] h-8 mt-4 flex flex-row justify-center items-center rounded-md bg-gradient-to-r from-cyan-400 to-blue-500"
                       >
                         <div className="w-7 h-8 mt-1">
