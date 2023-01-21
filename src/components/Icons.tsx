@@ -9,5 +9,13 @@ export const DeleteIcon = () => {
 };
 
 export const EditIcon = () => {
-  return <span className=" material-icons">edit</span>;
+  return <span className="material-icons">edit</span>;
+};
+
+export const SkillIcon = () => {
+  return <span className="material-icons">devices_other</span>;
+};
+
+export const ArrowDownIcon = () => {
+  return <span className="material-icons">keyboard_arrow_down</span>;
 };
