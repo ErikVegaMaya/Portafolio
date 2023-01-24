@@ -2,19 +2,22 @@ import axios from "axios";
 
 class AppRequest {
     get = async (url: string) => {
-        console.log(api_url + url);
-        return axios.get(api_url + url);
+        //console.log(api_url + url);
+        return axios.get(api_url + url).catch((error)=>{
+            console.log("Error");
+            console.log(error);
+        });
     };
 
     post = async (url: string, body = {}) => {
-        console.log(api_url + url);
-        console.log(body);
+       /*  console.log(api_url + url);
+        console.log(body); */
         return axios.post(api_url + url, body);
     }
 
     search = async (url: string, id: string) => {
-        console.log(api_url + url);
-        console.log(id);
+       /*  console.log(api_url + url);
+        console.log(id); */
         const full_url = api_url + url + id + '/';
         return axios.get(full_url);
     };
@@ -22,7 +25,7 @@ class AppRequest {
     delete = async (url: string, id: number | string) => {
         console.log(api_url + url);
         console.log(id);
-        const full_url = api_url + url + id + '/';
+        const full_url = api_url + url + '/' + id;
         return axios.delete(full_url );
     };
 
@@ -31,7 +34,7 @@ class AppRequest {
         id: number | string, 
         body: {}
     ) => {
-        const full_url = api_url + url + id + '/';
+        const full_url = api_url + url + '/' + id ;
         return axios.put(full_url, body);      
     };
 }
