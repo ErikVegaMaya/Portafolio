@@ -143,13 +143,13 @@ const AddSkill = (props: any) => {
             <div className="mt-6 flex flex-row items-center justify-center ">
               <button
                 onClick={props.onClick}
-                className="border rounded-lg bg-red-700 hover:bg-gray-900 px-4 py-1 mr-1 text-white"
+                className="border rounded-lg bg-slate-800 hover:bg-slate-600 px-4 py-1 mr-1 text-white"
               >
                 Cancel
               </button>
               <button
                 onClick={onSubmit}
-                className="border rounded-lg bg-green-700 hover:bg-gray-900 px-4 py-1 ml-1 text-white"
+                className="border rounded-lg  bg-cyan-900 hover:bg-cyan-700 px-4 py-1 ml-1 text-white"
               >
                 Save
               </button>
