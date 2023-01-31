@@ -5,17 +5,22 @@ import { NavLink } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 // Hooks
 import useGetSkills from "../../hooks/skills/useGetSkills";
+import useDeleteSkill from "../../hooks/skills/useDeleteSkill";
 // My components
 import { DeleteIcon } from "../../components/Icons";
+import DeleteModal from "../../components/modals/DeleteModal";
 
 const Skills = () => {
   const [hideProgramming, setIsHideProgramming] = React.useState(false);
   const [hideOther, setIsHideOther] = React.useState(false);
   const [isActive, setIsActive] = React.useState(false);
+  const [isDeleting, setIsDeleting] = React.useState(false);
+  const [currentId, setCurrentId] = React.useState("");
   const [skills, setSkills] = React.useState([]);
   const [otherSkills, setOtherSkills] = React.useState([]);
 
   const skillsQuery = useGetSkills();
+  const deleteQuery = useDeleteSkill();
 
   const catchChange = () => {
     setIsActive(!isActive);
@@ -44,8 +49,8 @@ const Skills = () => {
   const currentSkillItems = skills.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(skills.length / itemsPerPage);
 
-  console.log(currentSkillItems);
-  console.log(pageCount);
+  /* console.log(currentSkillItems);
+  console.log(pageCount); */
 
   const handlePageClick = (event: any) => {
     const newOffset = (event.selected * itemsPerPage) % skills.length;
@@ -55,11 +60,29 @@ const Skills = () => {
     setItemOffset(newOffset);
   };
 
+  const onDelete = () => {
+    setIsDeleting(!isDeleting);
+    //console.log("currentId");
+    //console.log(currentId);
+    deleteQuery.mutate(currentId);
+  };
+
+  const pressDeleteIcon = (id: string) => {
+    setIsDeleting(!isDeleting);
+    setCurrentId(id);
+  };
+
   return (
     <div className="w-screen h-full  ">
       <div className="relative flex justify-center h-full">
         <div className="bg-gray-100 border border-gray-500 rounded-lg w-[95%] h-[85%] my-2 py-2 px-4 ">
           {isActive && <AddSkill onClick={catchChange} />}
+          {isDeleting && (
+            <DeleteModal
+              onCancel={() => setIsDeleting(!isDeleting)}
+              onContinue={onDelete}
+            />
+          )}
           <div className="w-[98%] flex justify-end">
             <button className="my-4" onClick={catchChange}>
               <h1 className="px-4 rounded bg-slate-700 text-white hover:bg-slate-800">
@@ -119,7 +142,12 @@ const Skills = () => {
                                 />
                               </td>
                               <td className="border-b text-slate-800 border-gray-300 w-[10%]">
-                                <button className="hover:text-red-600 ">
+                                <button
+                                  onClick={() => {
+                                    pressDeleteIcon(obj.idSkill);
+                                  }}
+                                  className="hover:text-red-600 "
+                                >
                                   <DeleteIcon />
                                 </button>
                               </td>
@@ -194,7 +222,9 @@ const Skills = () => {
                           </td>
                           <td className="border-b text-slate-800 border-gray-300 w-[10%]">
                             <button
-                              onClick={() => {}}
+                              onClick={() => {
+                                pressDeleteIcon(obj.idSkill);
+                              }}
                               className="hover:text-red-600 "
                             >
                               <DeleteIcon />

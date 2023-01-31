@@ -1,11 +1,12 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { SkillIcon, ArrowDownIcon } from "../../components/Icons";
 // My components
 import DeleteModal from "../../components/modals/DeleteModal";
 // Hooks
 import useSearchSkill from "../../hooks/skills/useSearchSkill";
 import useUpdateSkill from "../../hooks/skills/useUpdateSkill";
+import useDeleteSkill from "../../hooks/skills/useDeleteSkill";
 
 const SkillDetail = () => {
   const initialValues = {
@@ -20,10 +21,12 @@ const SkillDetail = () => {
   const [form, setForm] = React.useState(initialValues);
   const [isActive, setIsActive] = React.useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { id } = location.state;
 
   const skillQuery = useSearchSkill(id);
   const updateQuery = useUpdateSkill();
+  const deleteQuery = useDeleteSkill();
 
   React.useEffect(() => {
     if (skillQuery.data) {
@@ -56,9 +59,16 @@ const SkillDetail = () => {
     });
   };
 
-  const onDelete = () => {
+  const onPressDelete = () => {
     setIsActive(!isActive);
     setShowActions(!showActions);
+  };
+
+  const onDelete = () => {
+    setIsActive(!isActive);
+    deleteQuery.mutate(id);
+    // falta agregar condición solo cuando el delete es success
+    navigate("/skills");
   };
 
   const onSubmit = () => {
@@ -90,7 +100,7 @@ const SkillDetail = () => {
           {isActive && (
             <DeleteModal
               onCancel={() => setIsActive(!isActive)}
-              onContinue={() => setIsActive(!isActive)}
+              onContinue={onDelete}
             />
           )}
           <div className="bg-slate-300 rounded-t-lg w-full">
@@ -128,7 +138,7 @@ const SkillDetail = () => {
                     <button
                       className=" text-white mb-1 py-1 hover:bg-slate-300 hover:text-slate-800"
                       id="delete"
-                      onClick={onDelete}
+                      onClick={onPressDelete}
                     >
                       <div className="px-8">Delete</div>
                     </button>

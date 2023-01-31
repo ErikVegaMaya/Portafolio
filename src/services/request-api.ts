@@ -23,8 +23,6 @@ class AppRequest {
     };
     
     delete = async (url: string, id: number | string) => {
-        console.log(api_url + url);
-        console.log(id);
         const full_url = api_url + url + '/' + id;
         return axios.delete(full_url );
     };
