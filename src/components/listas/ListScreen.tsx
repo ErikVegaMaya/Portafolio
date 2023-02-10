@@ -18,6 +18,7 @@ const ListScreen = (props: listProps) => {
           {props.headers.map((obj: any, index) => {
             return (
               <th
+                key={index}
                 className={"border-b border-gray-300 pl-3 w-[" + obj.size + "]"}
               >
                 {obj.name}
