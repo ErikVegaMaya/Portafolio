@@ -7,6 +7,7 @@ import Skills from "../../screens/skills/Skills";
 import Home from "../../screens/Home";
 import SkillDetail from "../../screens/skills/SkillDetail";
 import Experiences from "../../screens/experience/Experiences";
+import ExperienceDetail from "../../screens/experience/ExperienceDetail";
 
 const AppNavigator = () => {
   return (
@@ -21,6 +22,7 @@ const AppNavigator = () => {
           <Route path="/skills" element={<Skills />} />
           <Route path="/skillDetail" element={<SkillDetail />} />
           <Route path="/experiences" element={<Experiences />} />
+          <Route path="/experienceDetail" element={<ExperienceDetail />} />
         </Routes>
       </div>
     </div>

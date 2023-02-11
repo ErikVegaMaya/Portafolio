@@ -16,6 +16,10 @@ export const SkillIcon = () => {
   return <span className="material-icons">devices_other</span>;
 };
 
+export const WorkExperienceIcon = () => {
+  return <span className="material-icons-outlined">work_history</span>;
+};
+
 export const ArrowDownIcon = () => {
   return <span className="material-icons">keyboard_arrow_down</span>;
 };

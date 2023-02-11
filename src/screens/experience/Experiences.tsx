@@ -49,7 +49,7 @@ const Experiences = () => {
           headers={headersLists}
           rows={experiences}
           onPressDelete={onPressDelete}
-          toRedirect="/"
+          toRedirect="/experienceDetail"
         />
       )}
     </CommonArea>
