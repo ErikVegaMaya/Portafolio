@@ -5,6 +5,7 @@ import AddButton from "../../components/buttons/AddButton";
 import HideShowBar from "../../components/bars/HideShowBar";
 import AddExperience from "./AddExperience";
 import ExperienceList from "../../components/listas/ExperienceList";
+import DeleteModal from "../../components/modals/DeleteModal";
 // Hooks
 import useGetExperiences from "../../hooks/experiences/useGetExperiences";
 
@@ -12,6 +13,8 @@ const Experiences = () => {
   const [experiences, setExperiences] = React.useState([]);
   const [isActive, setIsActive] = React.useState(false);
   const [isHide, setIsHide] = React.useState(false);
+  const [isDeleting, setIsDeleting] = React.useState(false);
+  const [currentId, setCurrentId] = React.useState("");
 
   const experiencesQuery = useGetExperiences();
 
@@ -32,12 +35,20 @@ const Experiences = () => {
   }, [experiencesQuery.data]);
 
   const onPressDelete = (id: string) => {
+    setIsDeleting(!isDeleting);
     console.log(id);
+    setCurrentId(id);
   };
 
   return (
     <CommonArea>
       {isActive && <AddExperience onClick={() => setIsActive(!isActive)} />}
+      {isDeleting && (
+        <DeleteModal
+          onCancel={() => setIsDeleting(!isDeleting)}
+          onContinue={() => {}}
+        />
+      )}
       <AddButton title="New" onClick={() => setIsActive(!isActive)} />
       <HideShowBar
         title="Experiences"
