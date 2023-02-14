@@ -17,6 +17,13 @@ interface detailProps {
 }
 
 const DetailArea = (props: detailProps) => {
+  const { bgColorIcon } = props;
+  const styles = {
+    iconContainer: {
+      backgroundColor: bgColorIcon,
+    },
+  };
+
   return (
     <div className="w-screen h-full">
       <div className="relative flex justify-center h-full">
@@ -26,10 +33,9 @@ const DetailArea = (props: detailProps) => {
               <div className="flex flex-row">
                 <div
                   className={
-                    "flex justify-center items-center pt-1 w-[40px] h-[40px] bg-" +
-                    props.bgColorIcon +
-                    "-500 rounded-md"
+                    "flex justify-center items-center pt-1 w-[40px] h-[40px] rounded-md"
                   }
+                  style={styles.iconContainer}
                 >
                   <div className="text-white">{props.icon}</div>
                 </div>
