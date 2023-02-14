@@ -99,7 +99,7 @@ const SkillDetail = () => {
       title="Skill"
       subtitle={skill.nameSkill}
       icon={<SkillIcon />}
-      bgColorIcon="cyan"
+      bgColorIcon="#06b6d4"
       onClick={() => setShowActions(!showActions)}
       onEdit={onEdit}
       onDelete={onPressDelete}
