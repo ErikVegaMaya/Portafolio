@@ -17,6 +17,7 @@ const ExperienceList = (props: listProps) => {
             return (
               <th
                 className={"border-b border-gray-300 pl-3 w-[" + obj.size + "]"}
+                key={index}
               >
                 {obj.name}
               </th>
