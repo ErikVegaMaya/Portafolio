@@ -47,10 +47,10 @@ const ExperienceList = (props: listProps) => {
                     {obj.jobTitleExp}
                   </td>
                   <td className="border-b pl-3 border-gray-300 w-[17%]">
-                    {obj.initDateExp}
+                    {obj.initDateExp?.substring(0, 10)}
                   </td>
                   <td className="border-b pl-3 border-gray-300 w-[17%]">
-                    {obj.endDateExp}
+                    {obj.endDateExp?.substring(0, 10)}
                   </td>
                   <td className="border-b pl-3 text-slate-800 border-gray-300 w-[5%]">
                     <button
