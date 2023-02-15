@@ -8,6 +8,7 @@ import ExperienceList from "../../components/listas/ExperienceList";
 import DeleteModal from "../../components/modals/DeleteModal";
 // Hooks
 import useGetExperiences from "../../hooks/experiences/useGetExperiences";
+import useDeleteExperience from "../../hooks/experiences/useDeleteExperience";
 
 const Experiences = () => {
   const [experiences, setExperiences] = React.useState([]);
@@ -17,6 +18,7 @@ const Experiences = () => {
   const [currentId, setCurrentId] = React.useState("");
 
   const experiencesQuery = useGetExperiences();
+  const deleteQuery = useDeleteExperience();
 
   const headersLists = [
     { name: "Project", size: "20%" },
@@ -36,8 +38,13 @@ const Experiences = () => {
 
   const onPressDelete = (id: string) => {
     setIsDeleting(!isDeleting);
-    console.log(id);
     setCurrentId(id);
+  };
+
+  const onDelete = () => {
+    setIsDeleting(!isDeleting);
+    const data = { id: currentId, sf: "1" };
+    deleteQuery.mutate(data);
   };
 
   return (
@@ -46,7 +53,7 @@ const Experiences = () => {
       {isDeleting && (
         <DeleteModal
           onCancel={() => setIsDeleting(!isDeleting)}
-          onContinue={() => {}}
+          onContinue={onDelete}
         />
       )}
       <AddButton title="New" onClick={() => setIsActive(!isActive)} />
