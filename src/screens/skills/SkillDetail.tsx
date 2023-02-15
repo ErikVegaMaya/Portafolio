@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { SkillIcon, ArrowDownIcon } from "../../components/Icons";
+import { SkillIcon } from "../../components/Icons";
 // My components
 import DeleteModal from "../../components/modals/DeleteModal";
 import DetailArea from "../../components/areas/DetailArea";
@@ -68,7 +68,7 @@ const SkillDetail = () => {
   const onDelete = () => {
     setIsActive(!isActive);
     deleteQuery.mutate(id);
-    // falta agregar condición solo cuando el delete es success
+    // falta agregar la siguiente condición solo cuando el delete es success
     navigate("/skills");
   };
 
