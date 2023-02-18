@@ -8,6 +8,7 @@ import Home from "../../screens/Home";
 import SkillDetail from "../../screens/skills/SkillDetail";
 import Experiences from "../../screens/experience/Experiences";
 import ExperienceDetail from "../../screens/experience/ExperienceDetail";
+import ListEducation from "../../screens/education/ListEducation";
 
 const AppNavigator = () => {
   return (
@@ -23,6 +24,7 @@ const AppNavigator = () => {
           <Route path="/skillDetail" element={<SkillDetail />} />
           <Route path="/experiences" element={<Experiences />} />
           <Route path="/experienceDetail" element={<ExperienceDetail />} />
+          <Route path="/education" element={<ListEducation />} />
         </Routes>
       </div>
     </div>
