@@ -43,7 +43,7 @@ const ListEducation = () => {
         headers={headers}
         onPressDelete={onPressDelete}
         rows={education}
-        toRedirect="/"
+        toRedirect="/educationDetail"
       />
     </CommonArea>
   );

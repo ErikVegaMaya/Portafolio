@@ -23,3 +23,7 @@ export const WorkExperienceIcon = () => {
 export const ArrowDownIcon = () => {
   return <span className="material-icons">keyboard_arrow_down</span>;
 };
+
+export const EducationIcon = () => {
+  return <span className="material-icons">school</span>;
+};
