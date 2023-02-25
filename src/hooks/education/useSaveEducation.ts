@@ -12,7 +12,7 @@ const useSaveEducation = () => {
         onSuccess : async (response) => {
             console.log("Post Correcto");
             console.log(response);
-            queryClient.invalidateQueries("use-get-experiences");
+            queryClient.invalidateQueries("use-get-education");
         }
     });
 }
