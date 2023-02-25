@@ -1,11 +1,13 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 // My components
 import DetailArea from "../../components/areas/DetailArea";
 import { EducationIcon } from "../../components/Icons";
 import DeleteModal from "../../components/modals/DeleteModal";
 // Hooks
 import useSearchEducation from "../../hooks/education/useSearchEducation";
+import useUpdateEducation from "../../hooks/education/useUpdateEducation";
+import useDeleteEducation from "../../hooks/education/useDeleteEducation";
 
 const EducationDetail = () => {
   const initialValues = {
@@ -20,10 +22,11 @@ const EducationDetail = () => {
   const [isActive, setIsActive] = React.useState(false);
 
   const location = useLocation();
-  const navigate = useNavigate();
   const { id } = location.state;
 
   const educationQuery = useSearchEducation(id);
+  const updateQuery = useUpdateEducation();
+  const deleteQuery = useDeleteEducation();
 
   React.useEffect(() => {
     if (educationQuery.data) {
@@ -34,6 +37,7 @@ const EducationDetail = () => {
   React.useEffect(() => {
     setForm({
       ...form,
+      id: id,
       name: education.nameEdu,
       grade: education.gardeEdu,
     });
@@ -49,6 +53,12 @@ const EducationDetail = () => {
     setShowActions(!showActions);
   };
 
+  const onDelete = () => {
+    setIsActive(!isActive);
+    const data = { id: id, sf: "2" };
+    deleteQuery.mutate(data);
+  };
+
   const onCloseEdit = () => {
     setIsEditing(false);
     setForm({
@@ -56,6 +66,22 @@ const EducationDetail = () => {
       name: education.nameEdu,
       grade: education.gardeEdu,
     });
+  };
+
+  const onSubmit = () => {
+    const data = {
+      idEdu: form.id,
+      nameEdu: form.name,
+      gardeEdu: form.grade,
+    };
+    updateQuery.mutate(data, {
+      onError: async (error: any) => {
+        console.log("Error update Education");
+        const requestErrors = error.response.data;
+        console.log(requestErrors);
+      },
+    });
+    onCloseEdit();
   };
 
   return (
@@ -67,7 +93,7 @@ const EducationDetail = () => {
       onClick={() => setShowActions(!showActions)}
       onEdit={onEdit}
       onDelete={onPressDelete}
-      onSubmit={() => {}}
+      onSubmit={onSubmit}
       onCloseEdit={onCloseEdit}
       isShowingActions={showActions}
       isEditing={isEditing}
@@ -75,7 +101,7 @@ const EducationDetail = () => {
       {isActive && (
         <DeleteModal
           onCancel={() => setIsActive(!isActive)}
-          onContinue={() => {}}
+          onContinue={onDelete}
         />
       )}
 
