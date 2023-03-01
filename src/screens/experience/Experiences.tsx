@@ -68,6 +68,7 @@ const Experiences = () => {
           rows={experiences}
           onPressDelete={onPressDelete}
           toRedirect="/experienceDetail"
+          isTop={false}
         />
       )}
     </CommonArea>

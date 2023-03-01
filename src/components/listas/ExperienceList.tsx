@@ -6,6 +6,7 @@ interface listProps {
   rows: {}[];
   onPressDelete: (id: string) => void;
   toRedirect: string;
+  isTop: boolean;
 }
 
 const ExperienceList = (props: listProps) => {
@@ -40,9 +41,12 @@ const ExperienceList = (props: listProps) => {
                       {obj.projectExp}
                     </NavLink>
                   </td>
-                  <td className="border-b pl-3 border-gray-300 w-[17%]">
-                    {obj.companyExp}
-                  </td>
+                  {!props.isTop && (
+                    <td className="border-b pl-3 border-gray-300 w-[17%]">
+                      {obj.companyExp}
+                    </td>
+                  )}
+
                   <td className="border-b pl-3 border-gray-300 w-[20%]">
                     {obj.jobTitleExp}
                   </td>
@@ -52,14 +56,16 @@ const ExperienceList = (props: listProps) => {
                   <td className="border-b pl-3 border-gray-300 w-[17%]">
                     {obj.endDateExp?.substring(0, 10)}
                   </td>
-                  <td className="border-b pl-3 text-slate-800 border-gray-300 w-[5%]">
-                    <button
-                      onClick={() => props.onPressDelete(obj.idExp)}
-                      className="hover:text-red-600 "
-                    >
-                      <DeleteIcon />
-                    </button>
-                  </td>
+                  {!props.isTop && (
+                    <td className="border-b pl-3 text-slate-800 border-gray-300 w-[5%]">
+                      <button
+                        onClick={() => props.onPressDelete(obj.idExp)}
+                        className="hover:text-red-600 "
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </td>
+                  )}
                 </tr>
               )
             );
